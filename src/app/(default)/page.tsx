@@ -1,6 +1,8 @@
 "use client";
+import BoatPreview from "@/components/BoatPreview";
 import { getAccessToken, getMe } from "@/dataController";
 import { Me } from "@/types";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function page() {
@@ -24,9 +26,31 @@ export default function page() {
   }, []);
 
   return (
-    <>
-      {isLoading && <p>Loading...</p>}
-      {me && <p>Hello, {me.email}</p>}
-    </>
+    <div className="w-full h-full mt-12">
+      <h1 className="text-3xl font-medium mb-8">Welcome!</h1>
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h3 className="text-lg">My boats</h3>
+            <Link href="boats/add">
+              <p className="text-md text-primary">+ Add</p>
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <BoatPreview />
+            <BoatPreview />
+            <BoatPreview />
+          </div>
+        </div>
+        <div className="space-y-4">
+          <h3 className="text-lg">Boats for rent</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <BoatPreview />
+            <BoatPreview />
+            <BoatPreview />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
