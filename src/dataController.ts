@@ -119,6 +119,34 @@ export async function getMyBoats(accessToken: string): Promise<BoatsResponse> {
   };
 }
 
+export async function getBoatById(
+  id: number,
+  accessToken: string
+): Promise<BoatResponse> {
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+  };
+  const response = await fetch(`${baseURL}/boat/${id}`, options);
+  const data = await response.json();
+  if (!response.ok) {
+    return {
+      ok: false,
+      error: {
+        message: data.message,
+        statusCode: response.status,
+      },
+    };
+  }
+  return {
+    ok: true,
+    value: data,
+  };
+}
+
 export async function createBoat(
   createBoatRequest: CreateBoatRequest,
   accessToken: string
@@ -133,6 +161,37 @@ export async function createBoat(
     body: JSONdata,
   };
   const response = await fetch(`${baseURL}/boat/create`, options);
+  const data = await response.json();
+  if (!response.ok) {
+    return {
+      ok: false,
+      error: {
+        message: data.message,
+        statusCode: response.status,
+      },
+    };
+  }
+  return {
+    ok: true,
+    value: data.value,
+  };
+}
+
+export async function updateBoat(
+  createBoatRequest: CreateBoatRequest,
+  boatId: number,
+  accessToken: string
+): Promise<BoatResponse> {
+  const JSONdata = JSON.stringify(createBoatRequest);
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+    body: JSONdata,
+  };
+  const response = await fetch(`${baseURL}/boat/${boatId}/update`, options);
   const data = await response.json();
   if (!response.ok) {
     return {

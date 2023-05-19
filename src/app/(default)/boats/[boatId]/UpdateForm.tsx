@@ -2,11 +2,12 @@
 import Button from "@/components/Button";
 import Form from "@/components/Form";
 import FormInput from "@/components/FormInput";
-import { createBoat, getAccessToken } from "@/dataController";
-import { CreateBoatRequest, ErrorMessage } from "@/types";
+import { getAccessToken, updateBoat } from "@/dataController";
+import { Boat, CreateBoatRequest, ErrorMessage } from "@/types";
 import { FormEvent, useState } from "react";
 
-export default function page() {
+export default function UpdateForm(props: { boat: Boat }) {
+  const boat = props.boat;
   const [error, setError] = useState<ErrorMessage | null>(null);
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     console.log(e.target);
@@ -21,7 +22,6 @@ export default function page() {
       description: target.description.value,
       dailyPrice: target.dailyPrice.value,
     };
-
     // Some basic validation... don't allow blank values
     for (const key in createBoatRequest) {
       if (Object.prototype.hasOwnProperty.call(createBoatRequest, key)) {
@@ -35,36 +35,43 @@ export default function page() {
         }
       }
     }
-    const response = await createBoat(createBoatRequest, getAccessToken());
+    const response = await updateBoat(createBoatRequest, boat.id, getAccessToken());
     if (response.ok) {
-      window.location.href = "/";
+      window.location.href = "/boats/" + boat.id;
     } else {
       setError(response.error);
     }
   };
 
   return (
-    <div className="centerDiv">
-      <div className="w-full md:max-w-sm">
+    <div className="w-full h-full centerDiv">
+      <div className="md:max-w-sm w-full">
         <Form
-          title="Add a boat"
+          title="Edit"
           onSubmit={handleSubmit}
-          button={<Button text="Submit" />}
+          button={<Button text="Update" />}
           error={error}>
           <FormInput
             name="Name"
             value="name"
-            inputProps={{ placeholder: "Enter a name." }}
+            inputProps={{ placeholder: "Enter a name.", defaultValue: props.boat.name }}
           />
           <FormInput
             name="Description"
             value="description"
-            inputProps={{ placeholder: "Enter the description." }}
+            inputProps={{
+              placeholder: "Enter the description.",
+              defaultValue: props.boat.description,
+            }}
           />
           <FormInput
             name="Daily price"
             value="dailyPrice"
-            inputProps={{ type: "number", defaultValue: 1000, step: 0.01 }}
+            inputProps={{
+              type: "number",
+              defaultValue: props.boat.dailyPrice,
+              step: 0.01,
+            }}
           />
         </Form>
       </div>

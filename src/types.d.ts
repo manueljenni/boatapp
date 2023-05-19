@@ -48,6 +48,7 @@ export type ButtonProps = {
 };
 
 export type BoatPreviewProps = {
+  id: number;
   name: string;
   description: string;
   dailyPrice: number;

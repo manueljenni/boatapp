@@ -11,6 +11,7 @@ export default function MyBoatsGrid(props: { boats: Boat[] }) {
             return (
               <div id={boat.id.toString()}>
                 <BoatPreview
+                  id={boat.id}
                   name={boat.name}
                   description={boat.description}
                   dailyPrice={boat.dailyPrice}
@@ -21,7 +22,7 @@ export default function MyBoatsGrid(props: { boats: Boat[] }) {
       </div>
       {props.boats.length == 0 && (
         <Link href={"/boats/add"}>
-          <div className="border rounded-lg w-full h-48 flex justify-center items-center">
+          <div className="border rounded-lg w-full h-48 centerDiv">
             <div className="flex flex-col text-center space-y-2">
               <h1 className="text-xl">No boats added</h1>
               <p>Click to add one!</p>
