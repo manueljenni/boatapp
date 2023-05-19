@@ -1,5 +1,5 @@
 "use client";
-import BoatsGrid from "@/components/BoatsGrid";
+import MyBoatsGrid from "@/components/BoatsGrid";
 import { getAccessToken, getMe, getMyBoats } from "@/dataController";
 import { Boat, Me } from "@/types";
 import Link from "next/link";
@@ -40,7 +40,7 @@ export default function page() {
               <p className="text-md text-primary">+ Add</p>
             </Link>
           </div>
-          <BoatsGrid boats={boats ?? []} />
+          <MyBoatsGrid boats={boats ?? []} />
         </div>
         <div className="space-y-4">
           <h3 className="text-lg">Boats for rent</h3>
