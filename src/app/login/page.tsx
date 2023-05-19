@@ -2,7 +2,7 @@
 import Button from "@/components/Button";
 import Form from "@/components/Form";
 import FormInput from "@/components/FormInput";
-import { login } from "@/dataController";
+import { login, saveAccessToken } from "@/dataController";
 import { ErrorMessage } from "@/types";
 import { FormEvent, useState } from "react";
 
@@ -20,6 +20,7 @@ export default function page() {
       password: target.password.value,
     });
     if (response.ok) {
+      saveAccessToken(response.value.accessToken);
       window.location.href = "/";
     } else {
       setError(response.error);

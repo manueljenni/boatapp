@@ -1,4 +1,4 @@
-import { LogInRequest, LogInResponse } from "./types";
+import { LogInRequest, LogInResponse, MeResponse } from "./types";
 
 // Base url for the API - TODO: Should come from .env
 export const baseURL = "http://localhost:8081/api/v1";
@@ -25,7 +25,9 @@ export async function login(logInDto: LogInRequest): Promise<LogInResponse> {
   }
   return {
     ok: true,
-    value: data.accessToken,
+    value: {
+      accessToken: data.accessToken,
+    },
   };
 }
 
@@ -55,21 +57,46 @@ export async function signup(logInDto: LogInRequest): Promise<LogInResponse> {
   };
 }
 
+export async function getMe(accessToken: string): Promise<MeResponse> {
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+  };
+  const response = await fetch(`${baseURL}/user/me`, options);
+  const data = await response.json();
+  if (!response.ok) {
+    return {
+      ok: false,
+      error: {
+        message: data.message,
+        statusCode: response.status,
+      },
+    };
+  }
+  return {
+    ok: true,
+    value: data.email,
+  };
+}
+
 // Save access token - only works in client components!
 export function saveAccessToken(accessToken: string) {
   document.cookie = `boatAppToken=${accessToken}; path=/; max-age=360000`;
 }
 
 export function getAccessToken(serverCookies?: any) {
-  if (typeof window === "undefined") {
+  if (serverCookies) {
     // Server components
-    const token = serverCookies.get("accessToken");
+    const token = serverCookies.get("boatAppToken");
     return token.value;
   } else {
     // Client components
     const clientCookies = document.cookie.split(";");
     return clientCookies
-      .find((cookie: any) => cookie.includes("accessToken"))
+      .find((cookie: any) => cookie.includes("boatAppToken"))
       ?.split("=")[1];
   }
 }
