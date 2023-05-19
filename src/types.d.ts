@@ -47,6 +47,12 @@ export type ButtonProps = {
   className?: string;
 };
 
+export type BoatPreviewProps = {
+  name: string;
+  description: string;
+  dailyPrice: number;
+};
+
 /**
  * Data fetching
  */
@@ -72,3 +78,12 @@ export type LogInResponse = Result<{ accessToken: string }, ErrorMessage>;
 export type Me = { email: string };
 
 export type MeResponse = Result<Me, ErrorMessage>;
+
+export type Boat = {
+  id: number;
+  name: string;
+  description: string;
+  dailyPrice: number;
+};
+
+export type BoatResponse = Result<{ boats: Boat[] }, ErrorMessage>;

@@ -1,13 +1,14 @@
 "use client";
-import BoatPreview from "@/components/BoatPreview";
-import { getAccessToken, getMe } from "@/dataController";
-import { Me } from "@/types";
+import BoatsGrid from "@/components/BoatsGrid";
+import { getAccessToken, getMe, getMyBoats } from "@/dataController";
+import { Boat, Me } from "@/types";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function page() {
   const [isLoading, setIsLoading] = useState(true);
   const [me, setMe] = useState<Me | null>(null);
+  const [boats, setBoats] = useState<Boat[] | null>(null);
 
   // Try to get user data (also verifies that user is logged in)
   // If failed, redirect to login page
@@ -17,9 +18,12 @@ export default function page() {
       const fetchMe = await getMe(getAccessToken());
       if (fetchMe.ok) {
         setMe(fetchMe.value);
-        console.log(me);
       } else {
         window.location.href = "/login";
+      }
+      const fetchBoats = await getMyBoats(getAccessToken());
+      if (fetchBoats.ok) {
+        setBoats(fetchBoats.value.boats);
       }
     };
     fetchUserData();
@@ -36,19 +40,11 @@ export default function page() {
               <p className="text-md text-primary">+ Add</p>
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <BoatPreview />
-            <BoatPreview />
-            <BoatPreview />
-          </div>
+          <BoatsGrid boats={boats ?? []} />
         </div>
         <div className="space-y-4">
           <h3 className="text-lg">Boats for rent</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <BoatPreview />
-            <BoatPreview />
-            <BoatPreview />
-          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
         </div>
       </div>
     </div>
