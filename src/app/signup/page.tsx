@@ -21,6 +21,7 @@ export default function page() {
       password: target.password.value,
     });
     if (response.ok) {
+      console.log(response.value);
       saveAccessToken(response.value.accessToken);
       window.location.href = "/";
     } else {

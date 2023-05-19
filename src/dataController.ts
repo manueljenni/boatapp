@@ -58,7 +58,7 @@ export async function signup(logInDto: LogInRequest): Promise<LogInResponse> {
   }
   return {
     ok: true,
-    value: data.accessToken,
+    value: { accessToken: data.accessToken },
   };
 }
 

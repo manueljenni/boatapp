@@ -17,7 +17,7 @@ export default function page() {
         setMe(fetchMe.value);
         console.log(me);
       } else {
-        // window.location.href = "/login";
+        window.location.href = "/login";
       }
     };
     fetchUserData();
@@ -25,8 +25,8 @@ export default function page() {
 
   return (
     <>
-      {isLoading && <p>Is loading!</p>}
-      {me && <p>hi, {me.email}</p>}
+      {isLoading && <p>Loading...</p>}
+      {me && <p>Hello, {me.email}</p>}
     </>
   );
 }
