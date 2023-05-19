@@ -44,8 +44,8 @@ export default function page() {
   };
 
   return (
-    <div className="centerDiv">
-      <div className="w-full md:max-w-sm">
+    <div className="w-full centerDiv h-full">
+      <div className="md:max-w-sm w-full pt-24">
         <Form
           title="Add a boat"
           onSubmit={handleSubmit}

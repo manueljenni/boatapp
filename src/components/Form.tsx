@@ -3,7 +3,7 @@ import { FormProps } from "@/types";
 
 export default function Form(props: FormProps) {
   return (
-    <>
+    <div>
       <h1 className="text-center text-3xl font-bold">{props.title}</h1>
       {props.subtitle && (
         <h2 className="text-center text-gray-400 mt-4">{props.subtitle}</h2>
@@ -17,6 +17,6 @@ export default function Form(props: FormProps) {
           {props.button}
         </div>
       </form>
-    </>
+    </div>
   );
 }

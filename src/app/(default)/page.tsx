@@ -32,7 +32,7 @@ export default function page() {
   }, []);
 
   return (
-    <div className="w-full h-screen my-12">
+    <div className="w-full my-12">
       <h1 className="text-3xl font-medium mb-8">Welcome!</h1>
       <div className="space-y-8">
         <div className="space-y-4">
