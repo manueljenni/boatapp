@@ -11,7 +11,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex jsutify-center items-center min-h-screen text-center">
+        <div className="mx-12 flex justify-center items-center min-h-screen">
           {children}
         </div>
       </body>
