@@ -2,9 +2,11 @@ import {
   BoatResponse,
   BoatsResponse,
   CreateBoatRequest,
+  ErrorMessage,
   LogInRequest,
   LogInResponse,
   MeResponse,
+  Result,
 } from "./types";
 
 // Base url for the API - TODO: Should come from .env
@@ -205,6 +207,31 @@ export async function updateBoat(
   return {
     ok: true,
     value: data.value,
+  };
+}
+
+export async function deleteBoat(
+  boatId: number,
+  accessToken: string
+): Promise<Result<boolean, ErrorMessage>> {
+  const options = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+  };
+  const response = await fetch(`${baseURL}/boat/${boatId}/delete`, options);
+  const data = await response.json();
+  if (!response.ok) {
+    return {
+      ok: false,
+      error: data,
+    };
+  }
+  return {
+    ok: true,
+    value: true,
   };
 }
 

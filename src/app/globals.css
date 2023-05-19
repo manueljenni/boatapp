@@ -22,7 +22,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 input:-webkit-autofill,
@@ -45,6 +45,16 @@ textarea:-webkit-autofill:focus {
     60deg,
     var(--color-primary-light),
     var(--color-primary)
+  );
+}
+
+.delete-button-gradient {
+  position: relative;
+  z-index: 1;
+  background-image: linear-gradient(
+    60deg,
+    #e63946,
+    #c23b3d
   );
 }
 
