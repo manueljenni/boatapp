@@ -4,6 +4,7 @@ import Form from "@/components/Form";
 import FormInput from "@/components/FormInput";
 import { saveAccessToken, signup } from "@/dataController";
 import { ErrorMessage } from "@/types";
+import Link from "next/link";
 import { FormEvent, useState } from "react";
 
 export default function page() {
@@ -53,6 +54,9 @@ export default function page() {
           }}
         />
       </Form>
+      <Link href={"/login"}>
+        <p className="text-center text-primary font-medium w-full mt-4">Log in</p>
+      </Link>
     </div>
   );
 }

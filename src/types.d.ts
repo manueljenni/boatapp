@@ -68,3 +68,7 @@ export type LogInRequest = {
 };
 
 export type LogInResponse = Result<{ accessToken: string }, ErrorMessage>;
+
+export type Me = { email: string };
+
+export type MeResponse = Result<Me, ErrorMessage>;

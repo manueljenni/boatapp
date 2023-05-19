@@ -31,6 +31,11 @@ export async function login(logInDto: LogInRequest): Promise<LogInResponse> {
   };
 }
 
+export function logout() {
+  // Delete cookies
+  document.cookie = "boatAppToken=null;";
+}
+
 export async function signup(logInDto: LogInRequest): Promise<LogInResponse> {
   const JSONdata = JSON.stringify(logInDto);
   const options = {
@@ -71,14 +76,14 @@ export async function getMe(accessToken: string): Promise<MeResponse> {
     return {
       ok: false,
       error: {
-        message: data.message,
-        statusCode: response.status,
+        message: data.message ?? "Internal server error",
+        statusCode: response.status ?? "500",
       },
     };
   }
   return {
     ok: true,
-    value: data.email,
+    value: { email: data.email },
   };
 }
 
