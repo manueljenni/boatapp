@@ -9,7 +9,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <section className="flex flex-col w-full max-w-screen-lg h-full min-h-screen">
       <NavBar />
-      <div className="flex flex-grow justify-center">{children}</div>
+      <div className="flex flex-grow justify-center items-center">{children}</div>
     </section>
   );
 }

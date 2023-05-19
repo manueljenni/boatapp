@@ -21,7 +21,7 @@ export default function MyBoatsGrid(props: { boats: Boat[] }) {
       </div>
       {props.boats.length == 0 && (
         <Link href={"/boats/add"}>
-          <div className="border rounded-lg w-full h-32 flex justify-center items-center">
+          <div className="border rounded-lg w-full h-48 flex justify-center items-center">
             <div className="flex flex-col text-center space-y-2">
               <h1 className="text-xl">No boats added</h1>
               <p>Click to add one!</p>

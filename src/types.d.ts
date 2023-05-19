@@ -86,4 +86,11 @@ export type Boat = {
   dailyPrice: number;
 };
 
-export type BoatResponse = Result<{ boats: Boat[] }, ErrorMessage>;
+export type BoatResponse = Result<Boat, ErrorMessage>;
+export type BoatsResponse = Result<{ boats: Boat[] }, ErrorMessage>;
+
+export type CreateBoatRequest = {
+  name: string;
+  description: string;
+  dailyPrice: number;
+};

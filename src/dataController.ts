@@ -1,4 +1,11 @@
-import { BoatResponse, LogInRequest, LogInResponse, MeResponse } from "./types";
+import {
+  BoatResponse,
+  BoatsResponse,
+  CreateBoatRequest,
+  LogInRequest,
+  LogInResponse,
+  MeResponse,
+} from "./types";
 
 // Base url for the API - TODO: Should come from .env
 export const baseURL = "http://localhost:8081/api/v1";
@@ -87,7 +94,7 @@ export async function getMe(accessToken: string): Promise<MeResponse> {
   };
 }
 
-export async function getMyBoats(accessToken: string): Promise<BoatResponse> {
+export async function getMyBoats(accessToken: string): Promise<BoatsResponse> {
   const options = {
     method: "GET",
     headers: {
@@ -109,6 +116,36 @@ export async function getMyBoats(accessToken: string): Promise<BoatResponse> {
   return {
     ok: true,
     value: { boats: data },
+  };
+}
+
+export async function createBoat(
+  createBoatRequest: CreateBoatRequest,
+  accessToken: string
+): Promise<BoatResponse> {
+  const JSONdata = JSON.stringify(createBoatRequest);
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+    body: JSONdata,
+  };
+  const response = await fetch(`${baseURL}/boat/create`, options);
+  const data = await response.json();
+  if (!response.ok) {
+    return {
+      ok: false,
+      error: {
+        message: data.message,
+        statusCode: response.status,
+      },
+    };
+  }
+  return {
+    ok: true,
+    value: data.value,
   };
 }
 
