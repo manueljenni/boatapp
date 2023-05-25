@@ -29,7 +29,7 @@ export default function page() {
   };
 
   return (
-    <div className="w-full md:max-w-sm">
+    <div className="w-full md:max-w-sm transition-in-1">
       <Form
         title="Login"
         onSubmit={handleLogin}
