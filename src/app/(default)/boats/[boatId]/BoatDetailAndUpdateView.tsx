@@ -26,7 +26,7 @@ export default function BoatDetailAndUpdateView(props: { boat: Boat }) {
       {!showEditView && (
         <div className="flex flex-col space-y-12">
           <BoatDetailView boat={props.boat} />
-          <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 space-x-0 md:space-x-6 w-1/2">
+          <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 space-x-0 md:space-x-6 justify-center">
             <Button text={"Edit this boat"} onClick={toggleEditView} />
             <DeleteButton text={"Delete this boat"} onClick={handleBoatDelete} />
           </div>

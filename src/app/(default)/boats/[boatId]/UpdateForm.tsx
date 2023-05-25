@@ -45,7 +45,7 @@ export default function UpdateForm(props: { boat: Boat }) {
 
   return (
     <div className="w-full h-full centerDiv">
-      <div className="md:max-w-sm w-full">
+      <div className="md:max-w-sm w-full transition-in-1">
         <Form
           title="Edit"
           onSubmit={handleSubmit}

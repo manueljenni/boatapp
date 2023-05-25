@@ -186,7 +186,7 @@ export async function updateBoat(
 ): Promise<BoatResponse> {
   const JSONdata = JSON.stringify(createBoatRequest);
   const options = {
-    method: "POST",
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
       Authorization: "Bearer " + accessToken,

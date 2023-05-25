@@ -61,3 +61,50 @@ textarea:-webkit-autofill:focus {
 .form-button {
   @apply mt-8;
 }
+
+/* Animations  */
+.transition-in-1 {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: transitionIn 0.4s ease forwards;
+}
+
+.transition-in-2 {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: transitionIn 0.4s ease .3s forwards;
+}
+
+@keyframes transitionIn {
+  from {
+    opacity: .2;
+    transform: translateY(20px) rotateX(-10deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0px) rotateX(0deg);
+  }
+}
+
+/* On mobile, animate the first and second boat */
+@media (max-width: 768px) {
+  .grid > div:nth-child(1) {
+     @apply transition-in-1;
+   }
+ 
+   .grid > div:nth-child(2) {
+     @apply transition-in-2;
+   }
+ }
+
+/* On tablets & desktop, animate the first two rows of boats */
+@media (min-width: 768px) {
+ .grid > div:nth-child(-n+3) {
+    @apply transition-in-1;
+  }
+
+  .grid > div:nth-child(n+4):nth-child(-n+6) {
+    @apply transition-in-2;
+  }
+}
