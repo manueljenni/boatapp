@@ -1,8 +1,8 @@
 "use client";
+import { deleteBoat, getAccessToken } from "@/DataController";
 import BoatDetailView from "@/components/BoatDetailView";
 import Button from "@/components/Button";
 import DeleteButton from "@/components/DeleteButton";
-import { deleteBoat, getAccessToken } from "@/dataController";
 import { Boat } from "@/types";
 import { useState } from "react";
 import UpdateForm from "./UpdateForm";

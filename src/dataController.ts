@@ -9,8 +9,7 @@ import {
   Result,
 } from "./types";
 
-// Base url for the API - TODO: Should come from .env
-export const baseURL = "http://localhost:8081/api/v1";
+export const baseURL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function login(logInDto: LogInRequest): Promise<LogInResponse> {
   const JSONdata = JSON.stringify(logInDto);

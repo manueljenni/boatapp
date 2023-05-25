@@ -1,4 +1,4 @@
-import { getAccessToken, getBoatById } from "@/dataController";
+import { getAccessToken, getBoatById } from "@/DataController";
 import { cookies } from "next/headers";
 import BoatDetailAndUpdateView from "./BoatDetailAndUpdateView";
 

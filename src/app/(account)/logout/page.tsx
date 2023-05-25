@@ -1,5 +1,5 @@
 "use client";
-import { logout } from "@/dataController";
+import { logout } from "@/DataController";
 import { useEffect } from "react";
 
 export default function page() {

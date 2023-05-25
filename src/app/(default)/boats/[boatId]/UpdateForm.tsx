@@ -2,7 +2,7 @@
 import Button from "@/components/Button";
 import Form from "@/components/Form";
 import FormInput from "@/components/FormInput";
-import { getAccessToken, updateBoat } from "@/dataController";
+import { getAccessToken, updateBoat } from "@/DataController";
 import { Boat, CreateBoatRequest, ErrorMessage } from "@/types";
 import { FormEvent, useState } from "react";
 

@@ -1,7 +1,7 @@
 "use client";
+import { getAccessToken, getMe, getMyBoats } from "@/DataController";
 import BoatSkeleton from "@/components/BoatSkeleton";
 import MyBoatsGrid from "@/components/BoatsGrid";
-import { getAccessToken, getMe, getMyBoats } from "@/dataController";
 import { Boat, Me } from "@/types";
 import Link from "next/link";
 import { useEffect, useState } from "react";

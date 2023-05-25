@@ -2,7 +2,7 @@
 import Button from "@/components/Button";
 import Form from "@/components/Form";
 import FormInput from "@/components/FormInput";
-import { login, saveAccessToken } from "@/dataController";
+import { login, saveAccessToken } from "@/DataController";
 import { ErrorMessage } from "@/types";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
