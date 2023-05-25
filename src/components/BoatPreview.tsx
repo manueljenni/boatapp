@@ -8,8 +8,8 @@ export default function BoatPreview(props: BoatPreviewProps) {
       <div className="box rounded-lg w-full h-full bg-neutral-100 shadow-sm border border-neutral-200">
         <div>
           <Image
-            src={"/img/Azzam.jpg"}
-            alt="Azzam yacht"
+            src={"/images/Boat.jpg"}
+            alt="Boat Cover Image"
             width={600}
             height={600}
             className="w-full h-full object-cover rounded-t-lg"
