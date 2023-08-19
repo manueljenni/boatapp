@@ -1,7 +1,12 @@
 # Boatapp
 
-This is the boatapp - an app where you can sign up & log in to create, read, update and delete boats. 
-If you just want to try it out: [Hosted Demo](https://boatapp.vercel.app/signup) [API docs](https://gentle-gorge-74872.herokuapp.com/swagger-ui/index.html)
+This is the boatapp - an app where you can sign up & log in to create, read, update and delete boats.
+### Original requirements
+1. The user can log in and is taken to a list of all boats.
+2. The user can create, update and delete boats (basic CRUD application)
+3. (Optional) Proper authentication system for all requests
+
+This is the repo for the frontend, for the backend see [manueljenni/boatapp_api](https://github.com/manueljenni/boatapp_api)
 
 ### Tools
 - Backend: Spring Boot (Version 3, Java 17)
